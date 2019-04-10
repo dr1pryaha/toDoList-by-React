@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import '../styles/App.css';
+import EntryField from './EntryField.js';
  
 class App extends Component{
   render(){
     return (
-      <div>
-         <h1>Hello, react.js!</h1>
-      </div>
+    	<div>
+    		<EntryField />
+    	</div>
     );
   }
 }
