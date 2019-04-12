@@ -26,12 +26,12 @@ class App extends Component {
 			<div>
 				<EntryField 
 					value={this.state.text}
-					onChange={this.handleChange} 
 					onKeyPress={this.isEnterPressed}
+					onKeyDown={this.isEnterPressed}
 				/>
 				<ButtonList />
 			</div>
-	);
+		);
 	}
 }
 
