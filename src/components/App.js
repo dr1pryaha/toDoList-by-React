@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import '../styles/App.css';
 import EntryField from './EntryField.js';
 import ButtonList from './ButtonList.js';
- 
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -26,14 +26,13 @@ class App extends Component {
 			<div>
 				<EntryField 
 					value={this.state.text}
-					onChange={this.handleChange} 
+					onKeyPress={this.isEnterPressed}
 					onKeyDown={this.isEnterPressed}
 				/>
 				<ButtonList />
 			</div>
 		);
-		
 	}
 }
- 
+
 export default App;
