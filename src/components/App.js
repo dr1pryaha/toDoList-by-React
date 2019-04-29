@@ -11,26 +11,30 @@ class App extends Component {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
 		this.isEnterPressed = this.isEnterPressed.bind(this);
-		this.state = {text: ''};
+		this.state = {
+			text: '', 
+			todoList: [
+				{title:'Сделать тупую херню', isChecked: false,}, 
+				{title: 'Сделать тупую херню еще раз', isChecked: false}
+			]
+		};
 		
 		//this.createToDoItem = this.createToDoItem.bind(this);
-	}
-	
-	isEnterPressed(e) {
-		if (e.key === 'Enter') {
-			this.setState({
-				text: ''});
-		};
 	}
 
 	handleChange(e) {
 		this.setState({text: e.target.value});
 	}
 
-	createToDoItem(e) {
-		if (isEnterPressed(e)) {
-			this.state.ToDoList.push({title: e.target.value})
-		}
+	isEnterPressed(e) {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+
+			this.setState({
+				todoList: [...this.state.todoList, {title:this.state.text}],
+				text: ''
+			});
+		};
 	}
 
 	render(){
@@ -42,7 +46,7 @@ class App extends Component {
 					onKeyDown={this.isEnterPressed}
 				/>
 				<ButtonList />
-				<ToDoList onChange={this.createToDoItem}/>
+				<ToDoList  todoList={this.state.todoList} markTodoDone={this.props.markTodoDone}/>
 			</div>
 		);
 		

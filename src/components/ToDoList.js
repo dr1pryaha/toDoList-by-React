@@ -1,22 +1,15 @@
 import React,{Component} from 'react';
 
 class ToDoList extends Component{
-	constructor(props) {
-		super(props);
-		this.state = [
-			{title: 'Сделать тупую херню', isChecked: true},
-			{title: 'Сделать тупую херню еще раз', isChecked: false},
-		];
-	}
 	
 	render(){
 		return (
 
 			<div>
 				<section className = 'to-do-list'>
-					{this.state.map((todo/*, index*/) => 
-						<div>
-							<div onChange={this.props.onChange} /*key={index}*/ className = 'to-do-item' >
+					{this.props.todoList.map((todo, index) => 
+						<div key={index}>
+							<div className = 'to-do-item'>
 								{todo.title}
 								<input id = 'chk' type = 'checkbox' className = 'checkbox'/>
 								<label htmlFor = 'chk' className = 'far fa-circle'></label>
