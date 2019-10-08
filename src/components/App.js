@@ -11,11 +11,12 @@ class App extends Component {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
 		this.isEnterPressed = this.isEnterPressed.bind(this);
+		this.markTodoDone = this.markTodoDone.bind(this);
 		this.state = {
 			text: '', 
 			todoList: [
-				{title:'Сделать тупую херню', isChecked: false,}, 
-				{title: 'Сделать тупую херню еще раз', isChecked: false}
+				{title:'Сделать тупую херню', isChecked: 'fa-circle'}, 
+				{title: 'Сделать тупую херню еще раз', isChecked: 'fa-circle'}
 			]
 		};
 		
@@ -31,10 +32,15 @@ class App extends Component {
 			e.preventDefault();
 
 			this.setState({
-				todoList: [...this.state.todoList, {title:this.state.text}],
+				todoList: [...this.state.todoList, {title:this.state.text, isChecked: 'fa-circle'}],
 				text: ''
 			});
 		};
+	}
+
+	markTodoDone(e) {
+		var todoClass = this.state.todoList.isChecked ? 'fa-check-circle' : 'fa-circle';
+		this.setState({isChecked:{todoClass}});
 	}
 
 	render(){
@@ -46,7 +52,10 @@ class App extends Component {
 					onKeyDown={this.isEnterPressed}
 				/>
 				<ButtonList />
-				<ToDoList  todoList={this.state.todoList} markTodoDone={this.props.markTodoDone}/>
+				<ToDoList 
+					todoList={this.state.todoList} 
+					onClick={this.markTodoDone}
+				/>
 			</div>
 		);
 		

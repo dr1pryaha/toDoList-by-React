@@ -10,7 +10,7 @@ class EntryField extends Component{
 						type = 'search' 
 						className = 'entry-field' 
 						autoFocus
-						value = {this.props.value}
+						value={this.props.value}
 						onChange={this.props.onChange} 
 						onKeyDown={this.props.onKeyDown}
 					/>
