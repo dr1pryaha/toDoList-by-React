@@ -15,8 +15,8 @@ class App extends Component {
 		this.state = {
 			text: '', 
 			todoList: [
-				{title:'Сделать тупую херню', isChecked: 'fa-circle'}, 
-				{title: 'Сделать тупую херню еще раз', isChecked: 'fa-circle'}
+				{title:'Сделать тупую херню', isChecked: false}, 
+				{title: 'Сделать тупую херню еще раз', isChecked: false}
 			]
 		};
 		
@@ -32,15 +32,16 @@ class App extends Component {
 			e.preventDefault();
 
 			this.setState({
-				todoList: [...this.state.todoList, {title:this.state.text, isChecked: 'fa-circle'}],
+				todoList: [...this.state.todoList, {title:this.state.text, isChecked: false}],
 				text: ''
 			});
 		};
 	}
 
 	markTodoDone(e) {
-		var todoClass = this.state.todoList.isChecked ? 'fa-check-circle' : 'fa-circle';
+		var todoClass = this.state.todoList.isChecked ? true : false;
 		this.setState({isChecked:{todoClass}});
+		console.log('hello');
 	}
 
 	render(){
