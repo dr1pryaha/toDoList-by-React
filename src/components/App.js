@@ -39,8 +39,9 @@ class App extends Component {
 	}
 
 	markTodoDone(e) {
-		var todoClass = this.state.todoList.isChecked ? true : false;
-		this.setState({isChecked:{todoClass}});
+		this.setState({
+			todoList: [{ title: this.state.title, isChecked: true }],
+		});
 		console.log('hello');
 	}
 

@@ -14,7 +14,7 @@ class ToDoList extends Component{
 								<input id = 'chk' type = 'checkbox' className = 'checkbox'/>
 									<label 
 										htmlFor = 'chk'
-										className = {todo.isChecked ? 'fa fa-checked' : 'far fa-circle'}
+										className={todo.isChecked ? 'fa-check-circle' : 'far fa-circle'}
 										onClick={this.props.onClick}
 									>
 									</label>
