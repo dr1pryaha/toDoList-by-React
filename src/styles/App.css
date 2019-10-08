@@ -62,11 +62,11 @@ h1 {
 	height: auto;
 	width: auto;
 	left: 475px;
-	bottom: 6px;
+	bottom: 6.5px;
 	color: #C44732;
 }
 
-.fa-circle-thin, .fa-check-circle{
+.far.fa-circle, .fa-check-circle{
 	position: absolute;
 	z-index: -1;
 	left: -22px;
