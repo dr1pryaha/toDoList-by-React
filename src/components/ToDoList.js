@@ -15,7 +15,7 @@ class ToDoList extends Component{
 									<label 
 										htmlFor = 'chk'
 										className={todo.isChecked ? 'fa-check-circle' : 'far fa-circle'}
-										onClick={this.props.onClick}
+										onClick={() => this.props.onClick(todo)}
 									>
 									</label>
 								<i className = 'fas fa-window-close'></i>

@@ -3,6 +3,7 @@ import '../styles/App.css';
 import EntryField from './EntryField.js';
 import ButtonList from './ButtonList.js';
 import ToDoList from './ToDoList.js';
+import update from 'react-addons-update'
  
 
 
@@ -38,11 +39,11 @@ class App extends Component {
 		};
 	}
 
-	markTodoDone(e) {
+	markTodoDone(todo) {
 		this.setState({
-			todoList: [{ title: this.state.title, isChecked: true }],
+			todoList: update(this.state.todoList, {isChecked: {$set: true}})
 		});
-		console.log('hello');
+		console.log(todo);
 	}
 
 	render(){
