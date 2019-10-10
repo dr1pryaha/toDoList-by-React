@@ -41,9 +41,18 @@ class App extends Component {
 
 	markTodoDone(todo) {
 		this.setState({
-			todoList: update(this.state.todoList, {isChecked: {$set: true}})
+			todoList: this.state.todoList.map((todo) => 
+				todo, todo.isChecked ? !todo.isChecked : todo.isChecked)
 		});
 		console.log(todo);
+	}
+
+	destroyTodo(todo){
+		this.setState({
+			todoList: this.state.todoList.map((todo, i) => 
+				{todo[i] === undefined})
+		});
+		console.log("mouse down");
 	}
 
 	render(){
@@ -58,6 +67,7 @@ class App extends Component {
 				<ToDoList 
 					todoList={this.state.todoList} 
 					onClick={this.markTodoDone}
+					onMouseDown={this.destroyTodo}
 				/>
 			</div>
 		);

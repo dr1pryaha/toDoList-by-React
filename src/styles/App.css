@@ -68,7 +68,7 @@ h1 {
 
 .far.fa-circle, .fa-check-circle{
 	position: absolute;
-	
+	z-index: 1;
 	left: -22px;
 	top: 6px;
 }

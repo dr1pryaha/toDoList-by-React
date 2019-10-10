@@ -9,16 +9,16 @@ class ToDoList extends Component{
 					{this.props.markTodoDone};
 					{this.props.todoList.map((todo, index) => 
 						<div key={index}>
-							<div className = 'to-do-item'>
+							<div className={todo.isChecked ? 'to-do-item checked' : 'to-do-item'}>
 								{todo.title}
 								<input id = 'chk' type = 'checkbox' className = 'checkbox'/>
 									<label 
 										htmlFor = 'chk'
-										className={todo.isChecked ? 'fa-check-circle' : 'far fa-circle'}
+										className={todo.isChecked ? 'fa fa-check-circle' : 'far fa-circle'}
 										onClick={() => this.props.onClick(todo)}
 									>
 									</label>
-								<i className = 'fas fa-window-close'></i>
+								<i className = 'fas fa-window-close' onMouseDown={() => this.props.destroyTodo(todo)}></i>
 							</div>
 						</div>
 					)}
