@@ -3,7 +3,7 @@ import '../styles/App.css';
 import EntryField from './EntryField.js';
 import ButtonList from './ButtonList.js';
 import ToDoList from './ToDoList.js';
-import update from 'react-addons-update'
+//import update from 'react-addons-update'
  
 
 
@@ -16,12 +16,10 @@ class App extends Component {
 		this.state = {
 			text: '', 
 			todoList: [
-				{title:'Сделать тупую херню', isChecked: false}, 
-				{title: 'Сделать тупую херню еще раз', isChecked: false}
+				{id: 1, title:'Сделать тупую херню', isChecked: false}, 
+				{id: 2, title: 'Сделать тупую херню еще раз', isChecked: false}
 			]
 		};
-		
-		//this.createToDoItem = this.createToDoItem.bind(this);
 	}
 
 	handleChange(e) {
@@ -31,26 +29,36 @@ class App extends Component {
 	isEnterPressed(e) {
 		if (e.key === 'Enter') {
 			e.preventDefault();
+			//let currentId = this.state.todoList.map(todo => todo.id === todo.id+1);
 
 			this.setState({
-				todoList: [...this.state.todoList, {title:this.state.text, isChecked: false}],
+				todoList: [...this.state.todoList, { title: this.state.text, isChecked: false}],
 				text: ''
-			});
-		};
+			}); console.log(this.state.todoList)
+		}; 
 	}
 
-	markTodoDone(todo) {
+	markTodoDone(id) {
+		const currentTodo = this.state.todoList.find(todo => todo.id === id);
+		currentTodo.isChecked = !currentTodo.isChecked;
+
 		this.setState({
-			todoList: this.state.todoList.map((todo) => 
-				todo, todo.isChecked ? !todo.isChecked : todo.isChecked)
+			todoList: [...this.state.todoList, currentTodo]
 		});
-		console.log(todo);
 	}
+	
+	/*(todo) {
+		this.setState({
+			todoList: this.state.todoList.map((todo) =>
+				({ title: todo.title, isChecked: (todo.isChecked === false) ? true : false}))
+		})
+		console.log(todo)
+	}*/
 
 	destroyTodo(todo){
 		this.setState({
-			todoList: this.state.todoList.map((todo, i) => 
-				{todo[i] === undefined})
+			todoList: this.state.todoList.map((todo) => 
+				{todo === undefined})
 		});
 		console.log("mouse down");
 	}
@@ -74,5 +82,5 @@ class App extends Component {
 		
 	}
 }
- 
+
 export default App;
